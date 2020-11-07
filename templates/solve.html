@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<head>
+	<title>Truss Solver</title>
+</head>
+<h1>Truss Solver</h1>
+{% for i in range(len(truss.members)) %}
+    <p>{{ members[i]+': '+str(truss.members[i].tension) }}</p>
+{% endfor %}

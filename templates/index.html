@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+	<title>Truss Solver</title>
+</head>
+<h1>Truss Solver</h1>
+<p>Input the information below to receive tensions for the members of the truss!<br></p>
+<form action="/solve" method="get">
+	<label for="joints">Joints: ("letter:(x-coord,y-coord)" separated by ; i.e.: "A:(0,0);B:(3,4);C:(6,0)")</label>
+	<input type="text" id="joints" name="joints"><br><br>
+	<label for="members">Members: ("joint1joint2" separated by ; i.e.: "AB;AC;BC")</label>
+	<input type="text" id="members" name="members"><br><br>
+	<label for="loads">Loads: ("letter:upward-force" separated by ; i.e.: "B:-100")</label>
+	<input type="text" id="loads" name="loads"><br><br>
+	<input type="submit" value="Solve">
+</form>
