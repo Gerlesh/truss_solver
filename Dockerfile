@@ -1,10 +1,11 @@
-FROM python:3.8-alpine
-RUN mkdir /app
-WORKDIR /app
-COPY requirements.txt .
-COPY webapp.py .
-RUN apk update
-RUN apk add make automake gcc g++ subversion python3-dev
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-CMD [ "python", "webapp.py" ]
+
 COPY . .
+
+EXPOSE 5000
+CMD [ "python", "./webapp.py" ]
