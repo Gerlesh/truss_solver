@@ -9,24 +9,19 @@ def truss():
 
 @app.route('/solve')
 def solve():
-	joints = {}
-	for i in request.args.get('joints').split(';'):
-		name, coords = i.split(':')
-		if (coords[0] == '(') and (coords[-1] == ')') and (',' in coords):
-			try:
+	try:
+		joints = {}
+		for i in request.args.get('joints').split(';'):
+			name, coords = i.split(':')
+			if (coords[0] == '(') and (coords[-1] == ')') and (',' in coords):
 				coords = tuple([int(i) for i in coords[1:-1].split(',')])
 				joints[name] = coords
-			except ValueError:
-				return render_template('error.html')
-	print(joints)
-		
-	members = request.args.get('members').split(';')
-	try:
+		print(joints)
+			
+		members = request.args.get('members').split(';')
 		loads = {i.split(':')[0]: int(i.split(':')[1]) for i in request.args.get('loads').split(';')}
-	except ValueError:
-		return render_template('error.html')
 
-	try:
+	
 		truss = solver.Truss(joints, members, loads)
 		truss.solve()
 	except:
@@ -35,4 +30,4 @@ def solve():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
